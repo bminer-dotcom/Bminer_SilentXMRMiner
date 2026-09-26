@@ -1,0 +1,90 @@
+# ============================================================================
+# bminer_dev - what stays OUT of git
+# Tracked: source + vendored deliverables (xmrig.exe, bvm.exe, toxcore libs).
+# Ignored: build output, generated files, local-user settings, private files.
+# ============================================================================
+
+# --- Builder build output (Qt Creator shadow builds) ------------------------
+build/Desktop_Qt_*/
+/release/
+build/debug/
+
+# --- Compiled objects / libraries / generated MOC-UI-QRC --------------------
+*.o
+*.obj
+*.a
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.res
+*.map
+*.bin
+*.dll
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+qrc_*.cpp
+ui_*.h
+object_script.*
+*.generated.rc
+*_generated.h
+
+# --- qmake / CMake scratch --------------------------------------------------
+Makefile
+Makefile.*
+.qmake.stash
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+.clangd/
+.qtc_clangd/
+
+# --- Executables: gate out tools/builds, keep vendored deliverables ---------
+*.exe
+!**/xmrig.exe
+!**/xmrig_crypted.exe
+!**/bminer_dvm.exe
+!**/bvm.exe
+
+# --- Client build products (source under build/release/Client stays) --------
+build/release/Client/build/
+build/release/Client/build-toxcli/
+build/release/Client/backup/
+build/release/Client/tox_pair.json
+build/release/Client/resources/embedded_config.json
+build/release/Client/resources/tox_config.json
+
+# --- Local helper scripts: deps & generated artifacts -------------------------
+localtest/node_modules/
+localtest/cache/
+localtest/artifacts/
+
+# --- Qt Creator / editor / local assistant settings -------------------------
+.qtcreator/
+*.user
+.claude/
+
+# --- Local packer tooling -----------------------------------------------------
+*.vmp
+*_vmp.exe
+*-protected.exe
+*protected.bak
+
+# --- Local-only files (operator docs, helper scripts) -------------------------
+local/
+localtest/
+*.bak
+*.env
+.env
+
+# --- Archives (releases live in GitHub Releases, not the tree) --------------
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+
+# --- Re-include vendored prebuilt libs (needed to build the client) ---------
+!**/ThirdParty/toxcore/lib/*.a

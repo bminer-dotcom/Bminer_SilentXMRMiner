@@ -1,0 +1,17 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/guide">
+        <file alias="inverted-microscope.svg">assets/guide/inverted-microscope.svg</file>
+        <file alias="cell-group.svg">assets/guide/cell-group.svg</file>
+        <file alias="simple-cell.svg">assets/guide/simple-cell.svg</file>
+        <file alias="well-plate.svg">assets/guide/well-plate.svg</file>
+        <file alias="bacterium.svg">assets/guide/bacterium.svg</file>
+        <file alias="bacteria-swim.svg">assets/guide/bacteria-swim.svg</file>
+        <file alias="phage.svg">assets/guide/phage.svg</file>
+        <file alias="tree-of-life.svg">assets/guide/tree-of-life.svg</file>
+        <file alias="ambience.mp3">assets/guide/music that i love.mp3</file>
+    </qresource>
+</RCC>

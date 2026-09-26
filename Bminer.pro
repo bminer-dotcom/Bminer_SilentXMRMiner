@@ -13,7 +13,7 @@ QT += multimedia
 
 CONFIG += c++17
 TEMPLATE = app
-TARGET   = Bminer
+TARGET   = "bminer builder"
 VERSION  = 1.0.0
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
@@ -81,6 +81,14 @@ HEADERS += \
 win32: LIBS += -ldbghelp
 # crypt32: DPAPI (CryptProtectData / CryptUnprotectData) for encrypting Tox savedata at rest
 win32: LIBS += -lcrypt32
+
+# Windows: application icon + version metadata.
+# NOTE: the icon path is relative to the shadow-build directory (Qt Creator
+# default: <project>/build/<kit>/ -> ../../ reaches the project root, where
+# app.ico lives). Keep that layout; windres cannot take spaced absolute paths.
+win32 {
+    RC_FILE = $$PWD/Bminer_resource.rc
+}
 
 # ---------------------------------------------------------------------------
 # Windows: drop the Qt runtime next to the release binary, so the build folder

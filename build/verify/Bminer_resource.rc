@@ -1,5 +1,7 @@
 #include <windows.h>
 
+IDI_ICON1 ICON "../../app.ico"
+
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 1,0,0,0
 	PRODUCTVERSION 1,0,0,0
@@ -10,7 +12,7 @@ VS_VERSION_INFO VERSIONINFO
 	FILEFLAGS 0x0L
 #endif
 	FILEOS VOS_NT_WINDOWS32
-	FILETYPE VFT_DLL
+	FILETYPE VFT_APP
 	FILESUBTYPE VFT2_UNKNOWN
 	BEGIN
 		BLOCK "StringFileInfo"
@@ -21,8 +23,8 @@ VS_VERSION_INFO VERSIONINFO
 				VALUE "FileDescription", "\0"
 				VALUE "FileVersion", "1.0.0.0\0"
 				VALUE "LegalCopyright", "\0"
-				VALUE "OriginalFilename", "Bminer.exe\0"
-				VALUE "ProductName", "Bminer\0"
+				VALUE "OriginalFilename", "bminer builder.exe\0"
+				VALUE "ProductName", "bminer builder\0"
 				VALUE "ProductVersion", "1.0.0.0\0"
 				VALUE "InternalName", "\0"
 				VALUE "Comments", "\0"

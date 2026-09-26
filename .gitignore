@@ -57,24 +57,17 @@ build/release/Client/resources/embedded_config.json
 build/release/Client/resources/tox_config.json
 
 # --- Local helper scripts: deps & generated artifacts -------------------------
-localtest/node_modules/
-localtest/cache/
-localtest/artifacts/
+localtestarti/node_modules/
+localtestarti/cache/
+localtestarti/artifacts/
 
-# --- Qt Creator / editor / local assistant settings -------------------------
+# --- Qt Creator / editor settings ---------------------------------------------
 .qtcreator/
 *.user
-.claude/
 
-# --- Local packer tooling -----------------------------------------------------
-*.vmp
-*_vmp.exe
-*-protected.exe
-*protected.bak
-
-# --- Local-only files (operator docs, helper scripts) -------------------------
+# --- Local-only files (notes, helper scripts) ---------------------------------
 local/
-localtest/
+localtestarti/
 *.bak
 *.env
 .env

@@ -18,23 +18,9 @@ This build is **long-living**. It ships the **latest XMRig**, so it stays usable
 
 ## Video
 
-Drop your demo here.
+[![Watch the demo](assets/crypt.gif)](assets/quickoverview.mp4)
 
-**GitHub:** upload an `.mp4` in the README editor and paste the URL it gives you.
-
-```md
-https://github.com/YOUR_USER/YOUR_REPO/assets/USER_ID/VIDEO_ID
-```
-
-**File in the repo:**
-
-```html
-<video src="demo.mp4" controls width="720"></video>
-```
-
-**YouTube** (thumbnail → video):
-
-[![Watch the demo](assets/crypt.gif)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+Click the preview above to play the quick overview.
 
 ---
 

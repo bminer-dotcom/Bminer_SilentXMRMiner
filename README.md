@@ -18,9 +18,9 @@ This build is **long-living**. It ships the **latest XMRig**, so it stays usable
 
 ## Video
 
-[![Watch the demo](assets/crypt.gif)](assets/quickoverview.mp4)
+[▶ Quick overview](assets/quickoverview.mp4)
 
-Click the preview above to play the quick overview.
+Click to play the quick overview.
 
 ---
 
